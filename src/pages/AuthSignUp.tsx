@@ -94,7 +94,7 @@ export function AuthSignup() {
 
   return (
     <div className="min-h-screen bg-[#f4efca] flex items-center justify-center px-4">
-      <Card className="w-full max-w-md bg-white shadow-lg border border-[#f66435]">
+      <Card className="w-full max-w-md bg-[#e5dbb5] shadow-lg border border-[#f66435]">
         <CardHeader className="text-center">
           <CardTitle className="text-3xl text-[#f66435] font-bold">Sign Up</CardTitle>
           <CardDescription className="text-gray-700">
@@ -104,7 +104,7 @@ export function AuthSignup() {
         <CardContent className="space-y-6">
           <Button
             variant="outline"
-            className="w-full h-12 border-[#f66435] text-[#f66435] hover:bg-[#f66435] hover:text-white transition-all"
+            className="w-full h-12 transition-all"
             onClick={handleGoogleSignIn}
             disabled={isLoading}
           >

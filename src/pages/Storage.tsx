@@ -18,7 +18,6 @@ import { getAuth } from "firebase/auth"; // Import getAuth from firebase/auth
 import CryptoJS from "crypto-js"; // Import the encryption library
 import { Navbar } from "../components/Navbar";
 import { Card, CardContent, CardHeader } from "../components/ui/card";
-import { useNavigate } from "react-router-dom";
 import { useToast } from "../components/ui/use-toast";
 
 interface AuditLog {
@@ -29,7 +28,6 @@ interface AuditLog {
 }
 
 const Storage = () => {
-  const navigate = useNavigate();
   const { toast } = useToast();
   const [secretName, setSecretName] = useState("");
   const [secretNames, setSecretNames] = useState<string[]>([]);
@@ -400,10 +398,6 @@ const Storage = () => {
     }
   };
 
-  const handleBack = () => {
-    navigate(-1);
-  };
-
   return (
     <>
       <Navbar />
@@ -456,13 +450,6 @@ const Storage = () => {
           >
             Audit Trail
           </Button>
-          <Button
-            onClick={() => {
-              handleBack();
-            }}
-          >
-            Back
-          </Button>
         </div>
         <br />
 
@@ -483,11 +470,11 @@ const Storage = () => {
                   {secretNames.map((name, index) => (
                     <li
                       key={index}
-                      className="flex justify-between items-center p-2 border rounded-lg shadow-sm transition bg-[#f4efca] hover:bg-[#f66435]"
+                      className="flex justify-between items-center p-2 border rounded-lg shadow-sm transition bg-[#f4efca]"
                     >
                       <span className="text-gray-700">{name}</span>
                       <Button
-                        className="bg-red-600 hover:bg-red-800 px-3 py-1"
+                        className="bg-red-600 text-white hover:border-red-600 hover:text-red-600 px-3 py-1"
                         onClick={() => setDeleteConfirmSecret(name)}
                       >
                         Delete
@@ -519,7 +506,7 @@ const Storage = () => {
                     />
                     <div className="flex justify-end gap-2">
                       <Button
-                        className="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded"
+                        className="bg-gray-300 border-gray-300 text-gray-800 hover:bg-gray-400 hover:border-gray-400 hover:text-gray-900 px-4 py-2 rounded"
                         onClick={() => {
                           setDeleteConfirmSecret(null);
                           setConfirmationInput("");
@@ -528,7 +515,7 @@ const Storage = () => {
                         Cancel
                       </Button>
                       <Button
-                        className="bg-red-600 hover:bg-red-800 text-white px-4 py-2 rounded"
+                        className="bg-red-600 border-red-600 text-white hover:bg-red-800 hover:text-white hover:border-red-800 px-4 py-2 rounded"
                         onClick={handleDeleteSecret}
                       >
                         Confirm Delete
@@ -570,7 +557,7 @@ const Storage = () => {
                       <Label htmlFor="secretValue" className="text-left block">Secret Value</Label>
                       <Input
                         id="secretValue"
-                        placeholder="Enter Secret Value"
+                        placeholder="Secret to Encrypt"
                         value={secretValue}
                         onChange={(e) => setSecretValue(e.target.value)}
                         required
@@ -623,7 +610,6 @@ const Storage = () => {
                         Secret Name to Decrypt
                       </Label>
                       <Input
-                        className="bg-[#f4efca]"
                         id="decryptionSecretName"
                         placeholder="Enter Secret Name"
                         value={decryptionSecretName}
@@ -638,7 +624,6 @@ const Storage = () => {
                       <Label htmlFor="passPhrase" className="text-left block">Enter Passphrase</Label>
                       <Input
                         id="passPhrase"
-                        className="bg-[#f4efca]"
                         type="password"
                         placeholder="Enter PassPhrase"
                         value={passphrase}
@@ -658,8 +643,9 @@ const Storage = () => {
                     <br />
                     {decryptedValue && (
                       <div className="mt-4">
-                        <p className="text-gray-600 text-left block">Decrypted Secret:</p>
-                        <p className="text-gray-600 text-left block" >{decryptedValue}</p>
+                        <pre className="bg-[#d6c79f] p-2 rounded-md text-gray-900 text-sm text-left whitespace-pre-wrap break-words max-w-auto">
+                              Decrypted Secret : {decryptedValue}
+                              </pre>
                       </div>
                     )}
                   </div>
@@ -700,17 +686,17 @@ const Storage = () => {
                             index % 2 === 0 ? "bg-[#e5dbb5]" : "bg-[#e5dbb5]"
                           } `}
                         >
-                          <td className="px-4 py-2 bg-[#e5dbb5] text-[#f66435] text-left">
+                          <td className="px-4 py-2 bg-[#e5dbb5] text-gray-900 text-left">
                             {log.action}
                           </td>
-                          <td className="px-4 py-2 bg-[#e5dbb5] text-[#f66435] text-left">
+                          <td className="px-4 py-2 bg-[#e5dbb5] text-gray-900 text-left">
                             {new Date(
                               log.timestamp.seconds * 1000
                             ).toLocaleString()}
                           </td>
-                          <td className="px-4 py-2 border-[#f66435] text-[#f66435] text-left block">
+                          <td className="px-4 py-2 border-[#f66435] text-left block">
                             {Object.keys(log.metadata).length > 0 ? (
-                              <pre className="bg-[#d6c79f] p-2 rounded-md text-[#f66435] text-sm whitespace-pre-wrap break-words max-w-xs">
+                              <pre className="bg-[#d6c79f] p-2 rounded-md text-gray-900 text-sm whitespace-pre-wrap break-words max-w-xs">
                                 {JSON.stringify(log.metadata, null, 2)}
                               </pre>
                             ) : (
