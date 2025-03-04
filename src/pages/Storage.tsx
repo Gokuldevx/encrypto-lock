@@ -407,15 +407,14 @@ const Storage = () => {
   return (
     <>
       <Navbar />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-[#f4efca]">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+          <h1 className="text-4xl font-bold text-[#f66435]">
             Store Sensitive Credentials
           </h1>
         </div>
         <div className="flex gap-2">
           <Button
-            className="bg-black border text-white hover:bg-white hover:text-black"
             onClick={() => {
               fetchSecrets();
               setDecryptedValue("");
@@ -424,7 +423,6 @@ const Storage = () => {
             Home
           </Button>
           <Button
-            className="bg-black border text-white hover:bg-white hover:text-black"
             onClick={() => {
               setShowEncryption(true);
               setShowDecryption(false);
@@ -436,7 +434,6 @@ const Storage = () => {
             Encrypt
           </Button>
           <Button
-            className="bg-black border text-white hover:bg-white hover:text-black"
             onClick={() => {
               setShowDecryption(true);
               setShowEncryption(false);
@@ -448,7 +445,6 @@ const Storage = () => {
             Decrypt
           </Button>
           <Button
-            className="bg-black border text-white hover:bg-white hover:text-black"
             onClick={() => {
               setShowAuditTrail(true);
               setShowEncryption(false);
@@ -461,7 +457,6 @@ const Storage = () => {
             Audit Trail
           </Button>
           <Button
-            className="bg-black border text-white hover:bg-white hover:text-black"
             onClick={() => {
               handleBack();
             }}
@@ -472,22 +467,23 @@ const Storage = () => {
         <br />
 
         {showSecrets && (
-          <Card className="border-none shadow-xl">
-            <CardHeader className="border-b border-gray-100">
+          <Card className="border-[#f66435] shadow-xl">
+            <CardHeader className="border-b border-[#f66435] bg-[#e5dbb5]">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                <h2 className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+                <h2 className="text-2xl font-bold text-[#f66435]">
                   Stored Secrets
                 </h2>
               </div>
             </CardHeader>
-            <br />
-            <CardContent>
+            
+            <CardContent className="bg-[#e5dbb5]">
+            <br/>
               {secretNames.length > 0 ? (
                 <ul className="space-y-2">
                   {secretNames.map((name, index) => (
                     <li
                       key={index}
-                      className="flex justify-between items-center p-2 border rounded-lg shadow-sm hover:bg-gray-100 transition"
+                      className="flex justify-between items-center p-2 border rounded-lg shadow-sm transition bg-[#f4efca] hover:bg-[#f66435]"
                     >
                       <span className="text-gray-700">{name}</span>
                       <Button
@@ -546,19 +542,19 @@ const Storage = () => {
         )}
 
         {showEncryption && (
-          <Card className="border-none shadow-xl">
+          <Card className="border-[#f66435] shadow-xl">
             <form onSubmit={handleSaveSecret}>
-              <CardHeader className="border-b border-gray-100">
+              <CardHeader className="border-b border-[#f66435] bg-[#e5dbb5]">
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                  <h2 className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent flex items-center gap-2">
+                  <h2 className="text-2xl font-bold text-[#f66435]">
                     Encryption Section
                   </h2>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-8">
+              <CardContent className="space-y-8 bg-[#e5dbb5]">
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    <div className="space-y-2">
+                    <div className="space-y-2 ">
                       <br />
                       <Label htmlFor="secretName" className="text-left block">Secret Name</Label>
                       <Input
@@ -596,7 +592,6 @@ const Storage = () => {
                     <div className="flex gap-2">
                       <Button
                         type="submit"
-                        className="bg-primary hover:bg-primary/90"
                         disabled={isLoading}
                       >
                         {isLoading ? "Saving..." : "Encrypt & Store"}
@@ -610,16 +605,16 @@ const Storage = () => {
         )}
 
         {showDecryption && (
-          <Card className="border-none shadow-xl">
+          <Card className="border-[#f66435] shadow-xl">
             <form onSubmit={handleDecryptSecret}>
-              <CardHeader className="border-b border-gray-100">
+              <CardHeader className="border-b border-[#f66435] bg-[#e5dbb5]">
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                  <h2 className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent flex items-center gap-2">
+                  <h2 className="text-2xl font-bold text-[#f66435]">
                     Decryption Section
                   </h2>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-8">
+              <CardContent className="space-y-8 bg-[#e5dbb5]">
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div className="space-y-2">
@@ -628,6 +623,7 @@ const Storage = () => {
                         Secret Name to Decrypt
                       </Label>
                       <Input
+                        className="bg-[#f4efca]"
                         id="decryptionSecretName"
                         placeholder="Enter Secret Name"
                         value={decryptionSecretName}
@@ -642,6 +638,7 @@ const Storage = () => {
                       <Label htmlFor="passPhrase" className="text-left block">Enter Passphrase</Label>
                       <Input
                         id="passPhrase"
+                        className="bg-[#f4efca]"
                         type="password"
                         placeholder="Enter PassPhrase"
                         value={passphrase}
@@ -653,7 +650,6 @@ const Storage = () => {
                     <div className="flex gap-2">
                       <Button
                         type="submit"
-                        className="bg-primary hover:bg-primary/90"
                         disabled={isLoading}
                       >
                         {isLoading ? "Decrypting..." : "Decrypt"}
@@ -674,10 +670,10 @@ const Storage = () => {
         )}
 
         {showAuditTrail && (
-          <Card className="border-none shadow-xl">
-            <CardHeader className="border-b border-gray-100">
+          <Card className="border-[#f66435] bg-[#e5dbb5] shadow-xl ">
+            <CardHeader className="border-b border-[#f66435]">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                <h2 className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent flex items-center gap-2">
+                <h2 className="text-2xl font-bold bg-[#e5dbb5] text-[#f66435]">
                   Audit Trail
                 </h2>
               </div>
@@ -688,33 +684,33 @@ const Storage = () => {
                 <p className="text-gray-500 text-center">No logs available.</p>
               ) : (
                 <div className="overflow-x-auto">
-                  <table className="w-full border border-gray-200 shadow-sm rounded-lg overflow-hidden">
-                    <thead className="bg-gray-100 text-gray-700">
+                  <table className="w-full border border-[#f66435] shadow-sm rounded-lg overflow-hidden">
+                    <thead className=" bg-[#e5dbb5] text-[#f66435]">
                       <tr>
-                        <th className="px-4 py-2 text-left">Action</th>
-                        <th className="px-4 py-2 text-left">Timestamp</th>
-                        <th className="px-4 py-2 text-left">Details</th>
+                        <th className="px-4 py-2 text-left font-bold text-[#f66435]">Action</th>
+                        <th className="px-4 py-2 text-left font-bold text-[#f66435]">Timestamp</th>
+                        <th className="px-4 py-2 text-left font-bold text-[#f66435]">Details</th>
                       </tr>
                     </thead>
                     <tbody>
                       {auditLogs.map((log, index) => (
                         <tr
                           key={log.id}
-                          className={`border-b ${
-                            index % 2 === 0 ? "bg-white" : "bg-gray-50"
-                          } hover:bg-gray-100 transition`}
+                          className={`border-b border-[#f66435] ${
+                            index % 2 === 0 ? "bg-[#e5dbb5]" : "bg-[#e5dbb5]"
+                          } `}
                         >
-                          <td className="px-4 py-2 font-medium text-left">
+                          <td className="px-4 py-2 bg-[#e5dbb5] text-[#f66435] text-left">
                             {log.action}
                           </td>
-                          <td className="px-4 py-2 text-gray-600 text-left">
+                          <td className="px-4 py-2 bg-[#e5dbb5] text-[#f66435] text-left">
                             {new Date(
                               log.timestamp.seconds * 1000
                             ).toLocaleString()}
                           </td>
-                          <td className="px-4 py-2 text-gray-500 text-left block">
+                          <td className="px-4 py-2 border-[#f66435] text-[#f66435] text-left block">
                             {Object.keys(log.metadata).length > 0 ? (
-                              <pre className="bg-gray-200 p-2 rounded-md text-sm whitespace-pre-wrap break-words max-w-xs">
+                              <pre className="bg-[#d6c79f] p-2 rounded-md text-[#f66435] text-sm whitespace-pre-wrap break-words max-w-xs">
                                 {JSON.stringify(log.metadata, null, 2)}
                               </pre>
                             ) : (
