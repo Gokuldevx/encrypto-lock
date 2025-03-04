@@ -20,37 +20,28 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white border-b">
+    <nav className="bg-[#f4efca] border-b border-[#f66435]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <Link 
             to="/" 
-            className="text-2xl font-extrabold text-primary tracking-tight hover:opacity-80 transition-opacity">
+            className="text-2xl font-extrabold text-[#f66435] tracking-tight hover:opacity-80 transition-opacity">
             EncryptoLock
           </Link>
           <div className="flex gap-4 items-center">
             {showSignOut ? (
               <Button 
                 onClick={handleSignOut}
-                className="text-white shadow-lg 
-                bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-700
-                transform transition-all duration-300 ease-in-out
-                hover:scale-105 hover:shadow-xl
-                active:scale-95 active:shadow-md">
+                
+              >
                 Log Out
               </Button>
             ) : isHomePage && (
               <Button 
-  onClick={() => navigate('/auth/signIn')}
-  className="text-white shadow-lg 
-  bg-gradient-to-r from-primary to-[#f66435] hover:from-primary/90 hover:to-[#f66435]/90
-  transform transition-all duration-300 ease-in-out
-  hover:scale-105 hover:shadow-xl
-  active:scale-95 active:shadow-md
-  flex items-center gap-2"
->
-  Sign Up / Login
-</Button>
+                onClick={() => navigate('/auth/signIn')}
+              >
+                Sign Up / Login
+              </Button>
             )}
           </div>
         </div>
