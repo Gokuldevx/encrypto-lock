@@ -5,7 +5,7 @@ import { FirebaseError } from 'firebase/app'
 import { auth, googleProvider } from '../lib/firebase'
 import { Button } from '../components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
-import { Mail, Loader2 } from 'lucide-react'
+import { Loader2, LogIn } from 'lucide-react'
 import { useToast } from '../components/ui/use-toast'
 
 export function AuthSignup() {
@@ -93,23 +93,25 @@ export function AuthSignup() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-      <Card className="w-full max-w-md">
+    <div className="min-h-screen bg-[#f4efca] flex items-center justify-center px-4">
+      <Card className="w-full max-w-md bg-white shadow-lg border border-[#f66435]">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Sign Up</CardTitle>
-          <CardDescription>Continue with Google to create your account</CardDescription>
+          <CardTitle className="text-3xl text-[#f66435] font-bold">Sign Up</CardTitle>
+          <CardDescription className="text-gray-700">
+            Secure your secrets with EncryptoLock
+          </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-6">
           <Button
             variant="outline"
-            className="w-full h-12"
+            className="w-full h-12 border-[#f66435] text-[#f66435] hover:bg-[#f66435] hover:text-white transition-all"
             onClick={handleGoogleSignIn}
             disabled={isLoading}
           >
             {isLoading ? (
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              <Loader2 className="mr-2 h-5 w-5 animate-spin" />
             ) : (
-              <Mail className="mr-2 h-4 w-4" />
+              <LogIn className="mr-2 h-5 w-5" />
             )}
             Continue with Google
           </Button>
