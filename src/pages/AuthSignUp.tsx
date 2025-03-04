@@ -20,8 +20,6 @@ export function AuthSignup() {
 
       const result = await signInWithPopup(auth, googleProvider)
 
-      console.log('Google Sign-In successful:', result.user)
-
       if (!result.user.email) {
         throw new Error('No email provided from authentication provider')
       }
@@ -32,8 +30,6 @@ export function AuthSignup() {
         photoURL: result.user.photoURL || '',
         uid: result.user.uid
       }
-
-      console.log('Navigating to dashboard with user data:', userData)
 
       navigate('/storage', { state: userData, replace: true })
     } catch (error) {
