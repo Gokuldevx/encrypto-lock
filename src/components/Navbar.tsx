@@ -1,5 +1,6 @@
 import { Button } from '../components/ui/button';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { LockIcon } from 'lucide-react';
 
 export const Navbar = () => {
   const navigate = useNavigate();
@@ -20,19 +21,18 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="bg-[#f4efca] border-b border-[#f66435]">
+    <nav className="bg-[#f4efca] border-b-2 border-[#f66435] ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
-          <Link 
-            to="/" 
-            className="text-2xl font-extrabold text-[#f66435] tracking-tight hover:opacity-80 transition-opacity">
+          <h2 className=" flex items-center gap-2 text-2xl font-extrabold text-gray-900 tracking-tight hover:opacity-80 transition-opacity">
+          <LockIcon className="w-10 h-9 text-[#f66435]" />
             EncryptoLock
-          </Link>
+          </h2>
+
           <div className="flex gap-4 items-center">
             {showSignOut ? (
               <Button 
                 onClick={handleSignOut}
-                
               >
                 Log Out
               </Button>
