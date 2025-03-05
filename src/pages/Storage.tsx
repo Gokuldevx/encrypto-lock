@@ -31,7 +31,6 @@ const Storage = () => {
   const { toast } = useToast();
   const [secretName, setSecretName] = useState("");
   const [secretNames, setSecretNames] = useState<string[]>([]);
-  // const [showSecrets, setShowSecrets] = useState(false);
   const [showSecrets, setShowSecrets] = useState(true);
   const [showEncryption, setShowEncryption] = useState(false);
   const [showDecryption, setShowDecryption] = useState(false);
