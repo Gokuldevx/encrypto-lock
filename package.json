@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
@@ -47,11 +47,12 @@
     "crypto-js": "^4.2.0",
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.3.0",
-    "firebase": "^10.14.1",
+    "firebase": "^11.4.0",
     "framer-motion": "^11.16.0",
     "input-otp": "^1.2.4",
     "lucide-react": "^0.477.0",
     "next-themes": "^0.3.0",
+    "osenv": "^0.1.5",
     "react": "^18.3.1",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18.3.1",
@@ -64,7 +65,9 @@
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
+    "uuid": "^11.1.0",
     "vaul": "^0.9.3",
+    "vercel": "^25.2.0",
     "zod": "^3.24.1"
   },
   "devDependencies": {
