@@ -22,5 +22,5 @@ dist-ssr
 *.sln
 *.sw?
 encryptolock.code-workspace
-.env
+
 
