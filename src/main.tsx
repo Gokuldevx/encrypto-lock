@@ -7,7 +7,6 @@ import './index.css';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter basename="/encrypto-lock">
-    <h1 style={{ color: "red" }}>Hello, World!</h1>
       <App />
     </BrowserRouter>
   </React.StrictMode>,
